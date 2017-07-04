@@ -3,11 +3,11 @@ class AlbumsController < ApplicationController
     @album = Album.find(params[:id])
   end
   def new
-    @album = Album.new
+    @album = current_member.albums.new
   end
 
   def create
-    @album = Album.new(album_params)
+    @album = current_member.albums.create(album_params)
 
     if @album.save
       redirect_to @album, notice: 'Album successfully created.'
