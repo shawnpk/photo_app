@@ -1,0 +1,20 @@
+<h1>Yay, create a new album!</h1>
+
+<div>
+  <% if @album.errors.any? %>
+    <div id='error_explanation'>
+      <h2>There were some errors. Please see below.</h2>
+
+      <ul>
+        <% @album.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_for @album do |f| %>
+    <%= f.text_field :title %>
+    <%= f.submit 'Create Album' %>
+  <% end %>
+</div>
